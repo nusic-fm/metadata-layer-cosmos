@@ -1,0 +1,159 @@
+syntax = "proto3";
+package metadatalayercosmos.metadatalayercosmos;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "metadatalayercosmos/params.proto";
+import "metadatalayercosmos/fulltrack.proto";
+import "metadatalayercosmos/section.proto";
+import "metadatalayercosmos/stem.proto";
+// this line is used by starport scaffolding # 1
+
+option go_package = "metadata-layer-cosmos/x/metadatalayercosmos/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/metadata-layer-cosmos/metadatalayercosmos/params";
+  }
+  // Queries a list of FullTracks items.
+	rpc FullTracks(QueryFullTracksRequest) returns (QueryFullTracksResponse) {
+		option (google.api.http).get = "/metadata-layer-cosmos/metadatalayercosmos/full_tracks";
+	}
+
+// Queries a Section by id.
+	rpc Section(QueryGetSectionRequest) returns (QueryGetSectionResponse) {
+		option (google.api.http).get = "/metadata-layer-cosmos/metadatalayercosmos/section/{id}";
+	}
+
+	// Queries a list of Section items.
+	rpc SectionAll(QueryAllSectionRequest) returns (QueryAllSectionResponse) {
+		option (google.api.http).get = "/metadata-layer-cosmos/metadatalayercosmos/section";
+	}
+
+// Queries a list of Sections items.
+	rpc Sections(QuerySectionsRequest) returns (QuerySectionsResponse) {
+		option (google.api.http).get = "/metadata-layer-cosmos/metadatalayercosmos/sections/{fullTrackID}";
+	}
+
+// Queries a Stem by id.
+	rpc Stem(QueryGetStemRequest) returns (QueryGetStemResponse) {
+		option (google.api.http).get = "/metadata-layer-cosmos/metadatalayercosmos/stem/{id}";
+	}
+
+	// Queries a list of Stem items.
+	rpc StemAll(QueryAllStemRequest) returns (QueryAllStemResponse) {
+		option (google.api.http).get = "/metadata-layer-cosmos/metadatalayercosmos/stem";
+	}
+
+// Queries a list of Stems items.
+	rpc Stems(QueryStemsRequest) returns (QueryStemsResponse) {
+		option (google.api.http).get = "/metadata-layer-cosmos/metadatalayercosmos/stems/{fullTrackID}";
+	}
+
+// Queries a list of Metadata items.
+	rpc Metadata(QueryMetadataRequest) returns (QueryMetadataResponse) {
+		option (google.api.http).get = "/metadata-layer-cosmos/metadatalayercosmos/metadata/{fullTrackID}";
+	}
+
+// this line is used by starport scaffolding # 2
+}
+
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryFullTracksRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryFullTracksResponse {
+  // Returning a list of posts
+  repeated FullTrack FullTrack = 1;
+
+  // Adding pagination to response
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetSectionRequest {
+	uint64 id = 1;
+}
+
+message QueryGetSectionResponse {
+	Section Section = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllSectionRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllSectionResponse {
+	repeated Section Section = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QuerySectionsRequest {
+  uint64 fullTrackID = 1;
+  cosmos.base.query.v1beta1.PageRequest pagination = 2;
+}
+
+message QuerySectionsResponse {
+	FullTrack fullTrack = 1;
+	// Returning a list of comments
+	repeated Section sections = 2;
+	// Adding pagination to response
+	cosmos.base.query.v1beta1.PageResponse pagination = 3;
+}
+
+message QueryGetStemRequest {
+	uint64 id = 1;
+}
+
+message QueryGetStemResponse {
+	Stem Stem = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllStemRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllStemResponse {
+	repeated Stem Stem = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryStemsRequest {
+  uint64 fullTrackID = 1;
+  cosmos.base.query.v1beta1.PageRequest pagination = 2;
+}
+
+message QueryStemsResponse {
+	FullTrack fullTrack = 1;
+	// Returning a list of comments
+	repeated Stem stems = 2;
+	// Adding pagination to response
+	cosmos.base.query.v1beta1.PageResponse pagination = 3;
+}
+
+message QueryMetadataRequest {
+  uint64 fullTrackID = 1;
+  cosmos.base.query.v1beta1.PageRequest pagination = 2;
+}
+
+message QueryMetadataResponse {
+	FullTrack fullTrack = 1;
+	repeated Section sections = 2;
+	// Returning a list of comments
+	repeated Stem stems = 3;
+	// Adding pagination to response
+	cosmos.base.query.v1beta1.PageResponse pagination = 4;
+}
+
+// this line is used by starport scaffolding # 3

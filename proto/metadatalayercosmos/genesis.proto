@@ -1,0 +1,20 @@
+syntax = "proto3";
+package metadatalayercosmos.metadatalayercosmos;
+
+import "gogoproto/gogo.proto";
+import "metadatalayercosmos/params.proto";
+import "metadatalayercosmos/section.proto";
+import "metadatalayercosmos/stem.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "metadata-layer-cosmos/x/metadatalayercosmos/types";
+
+// GenesisState defines the metadatalayercosmos module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  repeated Section sectionList = 2 [(gogoproto.nullable) = false];
+  uint64 sectionCount = 3;
+  repeated Stem stemList = 4 [(gogoproto.nullable) = false];
+  uint64 stemCount = 5;
+  // this line is used by starport scaffolding # genesis/proto/state
+}

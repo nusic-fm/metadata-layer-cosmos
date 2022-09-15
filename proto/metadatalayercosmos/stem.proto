@@ -1,0 +1,13 @@
+syntax = "proto3";
+package metadatalayercosmos.metadatalayercosmos;
+
+option go_package = "metadata-layer-cosmos/x/metadatalayercosmos/types";
+
+message Stem {
+  uint64 id = 1;
+  string stemCid = 2; 
+  string stemName = 3; 
+  string stemType = 4; 
+  uint64 fullTrackID = 5; 
+  
+}

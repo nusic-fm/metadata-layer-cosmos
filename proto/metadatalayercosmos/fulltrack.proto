@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package metadatalayercosmos.metadatalayercosmos;
+
+option go_package = "metadata-layer-cosmos/x/metadatalayercosmos/types";
+
+message FullTrack {
+    string creator = 1;
+    string cid = 2;
+    string artistName = 3;
+    string trackTitle = 4;
+    string album = 5;
+    string bpm = 6;
+    string key = 7;
+    string bars = 8;
+    string beats = 9;
+    string genre = 10;
+    string timeSignature = 11;
+    string durationMs = 12;
+    string startBeatOffsetMs = 13;
+    string sectionsCount = 14;
+    string stemsCount = 15;
+    uint64 id = 16;
+}

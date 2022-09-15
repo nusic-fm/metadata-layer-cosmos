@@ -1,0 +1,65 @@
+syntax = "proto3";
+package metadatalayercosmos.metadatalayercosmos;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "metadata-layer-cosmos/x/metadatalayercosmos/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc CreateFullTrack(MsgCreateFullTrack) returns (MsgCreateFullTrackResponse);
+  rpc CreateSection(MsgCreateSection) returns (MsgCreateSectionResponse);
+  rpc CreateStem(MsgCreateStem) returns (MsgCreateStemResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreateFullTrack {
+  string creator = 1;
+  string cid = 2;
+  string artistName = 3;
+  string trackTitle = 4;
+  string album = 5;
+  string bpm = 6;
+  string key = 7;
+  string bars = 8;
+  string beats = 9;
+  string genre = 10;
+  string timeSignature = 11;
+  string durationMs = 12;
+  string startBeatOffsetMs = 13;
+  string sectionsCount = 14;
+  string stemsCount = 15;
+  uint64 id = 16;
+}
+
+message MsgCreateFullTrackResponse {
+  uint64 id = 1;
+}
+
+message MsgCreateSection {
+  string creator = 1;
+  uint64 fullTrackID = 2;
+  string sectionName = 3;
+  uint64 sectionStartTimeMs = 4;
+  uint64 sectionEndTimeMs = 5;
+  uint64 id = 6;
+}
+
+message MsgCreateSectionResponse {
+  uint64 id = 1;
+}
+
+message MsgCreateStem {
+  string creator = 1;
+  uint64 fullTrackID = 2;
+  string stemCid = 3;
+  string stemName = 4;
+  string stemType = 5;
+  uint64 id = 6;
+}
+
+message MsgCreateStemResponse {
+  uint64 id = 1;
+}
+
+// this line is used by starport scaffolding # proto/tx/message
