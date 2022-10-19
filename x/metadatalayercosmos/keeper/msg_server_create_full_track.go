@@ -31,6 +31,9 @@ func (k msgServer) CreateFullTrack(goCtx context.Context, msg *types.MsgCreateFu
 
 	// Add a post to the store and get back the ID
 	id := k.AppendFullTrack(ctx, fullTrack)
-
+	ctx.EventManager().EmitTypedEvent(&types.EventFullTrackCreated{
+		Address: fullTrack.Creator,
+		Id:      id,
+	})
 	return &types.MsgCreateFullTrackResponse{Id: id}, nil
 }

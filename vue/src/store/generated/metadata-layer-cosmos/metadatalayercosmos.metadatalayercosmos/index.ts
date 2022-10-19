@@ -1,12 +1,13 @@
 import { txClient, queryClient, MissingWalletError , registry} from './module'
 
+import { EventFullTrackCreated } from "./module/types/metadatalayercosmos/events"
 import { FullTrack } from "./module/types/metadatalayercosmos/fulltrack"
 import { Params } from "./module/types/metadatalayercosmos/params"
 import { Section } from "./module/types/metadatalayercosmos/section"
 import { Stem } from "./module/types/metadatalayercosmos/stem"
 
 
-export { FullTrack, Params, Section, Stem };
+export { EventFullTrackCreated, FullTrack, Params, Section, Stem };
 
 async function initTxClient(vuexGetters) {
 	return await txClient(vuexGetters['common/wallet/signer'], {
@@ -55,6 +56,7 @@ const getDefaultState = () => {
 				Metadata: {},
 				
 				_Structure: {
+						EventFullTrackCreated: getStructure(EventFullTrackCreated.fromPartial({})),
 						FullTrack: getStructure(FullTrack.fromPartial({})),
 						Params: getStructure(Params.fromPartial({})),
 						Section: getStructure(Section.fromPartial({})),

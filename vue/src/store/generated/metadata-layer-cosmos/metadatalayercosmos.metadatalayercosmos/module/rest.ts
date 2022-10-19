@@ -124,7 +124,7 @@ export interface MetadatalayercosmosQueryMetadataResponse {
  * QueryParamsResponse is response type for the Query/Params RPC method.
  */
 export interface MetadatalayercosmosQueryParamsResponse {
-  /** params holds all the parameters of this module. */
+  /** Params defines the parameters for the module. */
   params?: MetadatalayercosmosParams;
 }
 
@@ -452,7 +452,7 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title metadatalayercosmos/fulltrack.proto
+ * @title metadatalayercosmos/events.proto
  * @version version not set
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {

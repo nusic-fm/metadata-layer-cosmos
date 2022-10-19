@@ -30226,7 +30226,6 @@ paths:
                       format: uint64
                 title: Returning a list of posts
               pagination:
-                title: Adding pagination to response
                 type: object
                 properties:
                   next_key:
@@ -30318,6 +30317,16 @@ paths:
           in: query
           required: false
           type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
       tags:
         - Query
   '/metadata-layer-cosmos/metadatalayercosmos/metadata/{fullTrackID}':
@@ -30404,7 +30413,6 @@ paths:
                       format: uint64
                 title: Returning a list of comments
               pagination:
-                title: Adding pagination to response
                 type: object
                 properties:
                   next_key:
@@ -30501,6 +30509,16 @@ paths:
           in: query
           required: false
           type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
       tags:
         - Query
   /metadata-layer-cosmos/metadatalayercosmos/params:
@@ -30514,8 +30532,8 @@ paths:
             type: object
             properties:
               params:
-                description: params holds all the parameters of this module.
                 type: object
+                description: Params defines the parameters for the module.
             description: >-
               QueryParamsResponse is response type for the Query/Params RPC
               method.
@@ -30657,6 +30675,16 @@ paths:
             when key
 
             is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -30808,7 +30836,6 @@ paths:
                            repeated Bar results = 1;
                            PageResponse page = 2;
                    }
-                title: Adding pagination to response
         default:
           description: An unexpected error response.
           schema:
@@ -30876,6 +30903,16 @@ paths:
             when key
 
             is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -30997,6 +31034,16 @@ paths:
             when key
 
             is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -31144,7 +31191,6 @@ paths:
                            repeated Bar results = 1;
                            PageResponse page = 2;
                    }
-                title: Adding pagination to response
         default:
           description: An unexpected error response.
           schema:
@@ -31212,6 +31258,16 @@ paths:
             when key
 
             is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -52791,7 +52847,6 @@ definitions:
               format: uint64
         title: Returning a list of posts
       pagination:
-        title: Adding pagination to response
         type: object
         properties:
           next_key:
@@ -52931,7 +52986,6 @@ definitions:
               format: uint64
         title: Returning a list of comments
       pagination:
-        title: Adding pagination to response
         type: object
         properties:
           next_key:
@@ -52960,8 +53014,8 @@ definitions:
     type: object
     properties:
       params:
-        description: params holds all the parameters of this module.
         type: object
+        description: Params defines the parameters for the module.
     description: QueryParamsResponse is response type for the Query/Params RPC method.
   metadatalayercosmos.metadatalayercosmos.QuerySectionsResponse:
     type: object
@@ -53047,7 +53101,6 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
-        title: Adding pagination to response
   metadatalayercosmos.metadatalayercosmos.QueryStemsResponse:
     type: object
     properties:
@@ -53130,7 +53183,6 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
-        title: Adding pagination to response
   metadatalayercosmos.metadatalayercosmos.Section:
     type: object
     properties:

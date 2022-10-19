@@ -1,0 +1,10 @@
+// proto/blog/events.proto
+syntax = "proto3";
+package metadatalayercosmos.metadatalayercosmos;
+
+option go_package = "metadata-layer-cosmos/x/metadatalayercosmos/types";
+
+message EventFullTrackCreated {
+    uint64 Id = 1;
+    string address = 2;
+}
